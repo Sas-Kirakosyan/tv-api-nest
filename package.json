@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build && echo 'Build completed successfully' || echo 'Build failed'",
+    "build": "nest build && ls -la dist && echo 'Build completed successfully' || echo 'Build failed'",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main.ts",
