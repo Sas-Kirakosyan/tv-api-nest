@@ -39,7 +39,7 @@ async function bootstrap() {
     }),
   );
   app.use(cookieParser());
-  const port = 5000;
+  const port = process.env.PORT || 3000;
   // Log deployment details at startup
   console.log("Current working directory:", process.cwd());
   console.log("Deployed files:", readdirSync(join(process.cwd(), "dist")));
