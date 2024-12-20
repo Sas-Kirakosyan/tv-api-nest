@@ -40,9 +40,10 @@ async function bootstrap() {
   );
   app.use(cookieParser());
   const port = process.env.PORT || 3000;
+  console.log("---------------------------process", process.env.NODE_ENV);
   // Log deployment details at startup
-  console.log("Current working directory:", process.cwd());
-  console.log("Deployed files:", readdirSync(join(process.cwd(), "dist")));
+  // console.log("Current working directory:", process.cwd());
+  // console.log("Deployed files:", readdirSync(join(process.cwd(), "dist")));
 
   app.getHttpAdapter().get("/download-file", (req, res) => {
     try {
@@ -56,7 +57,7 @@ async function bootstrap() {
 
   await app.listen(port);
   await app.init();
-  console.log(`Server started on port :${port}`);
+  console.log(`Server started on port :${process.env.PORT}`);
   return serverless(server);
 }
 bootstrap();

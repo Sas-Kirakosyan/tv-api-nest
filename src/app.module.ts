@@ -1,16 +1,18 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { ConfigModule } from "@nestjs/config";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { UsersModule } from "./users/users.module";
 import { AuthModule } from "./auth/auth.module";
 import { TvApiModule } from "./tv-api/tv-api.module";
 import { WhmcsModule } from "./whmcs/whmcs.module";
-// import { PaymentService } from "./payment/payment.service";
-// import { PaymentModule } from "./payment/payment.module";
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, // Makes the configuration globally available
+    }),
     TypeOrmModule.forRoot({
       type: "postgres",
       host: "aws-0-eu-central-1.pooler.supabase.com", //localhost
@@ -30,10 +32,8 @@ import { WhmcsModule } from "./whmcs/whmcs.module";
     AuthModule,
     TvApiModule,
     WhmcsModule,
-    // PaymentModule,
   ],
   controllers: [AppController],
-  // providers: [AppService, PaymentService],
   providers: [AppService],
 })
 // eslint-disable-next-line prettier/prettier
